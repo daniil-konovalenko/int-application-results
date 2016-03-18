@@ -15,3 +15,6 @@ class Results(db.Model):
 
     def __str__(self):
         return '<Result of student #{}>'.format(self.student_id)
+
+    def __getitem__(self, item):
+        return self.__dict__.get(item)
