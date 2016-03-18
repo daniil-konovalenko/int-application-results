@@ -1,4 +1,4 @@
-#!resenv/bin/python
+#!venv/bin/python
 from app import manager
 
 
