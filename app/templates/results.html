@@ -5,6 +5,27 @@
     <title>Title</title>
 </head>
 <body>
-Здесь результаты
+<p>Результаты вступительных экзаменов</p>
+<table border="1">
+    <tr>
+        <td>ID участника</td>
+        <td>Математика (тест)</td>
+        <td>Математика</td>
+        <td>Филология</td>
+        <td>История</td>
+        <td>Естествознание</td>
+        <td>Комментарии</td>
+    </tr>
+    <tr>
+        <td>{{ results.student_id }}</td>
+        <td>{{ results.math }}</td>
+        <td>{{ results.math_test }}</td>
+        <td>{{ results.philology }}</td>
+        <td>{{ results.history }}</td>
+        <td>{{ results.science }}</td>
+        <td>{{ results.comments }}</td>
+
+    </tr>
+</table>
 </body>
 </html>
