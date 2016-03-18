@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты I тура поступающих в 5 класс</title>
+</head>
+<body>
+<form action="/results" method="post" name="student_id">
+    {{ form.hidden_tag() }}
+    Введите идентификационный номер участника
+    {{ form.id(size=10) }}
+    <p><input type="submit" value="Показать результаты"></p>
+</form>
+
+</body>
+</html>
