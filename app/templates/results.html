@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<p>Результаты вступительных экзаменов</p>
+{% extends "base.html" %}
+{% block content %}
 <table border="1">
     <tr>
     {% for subject, score in results %}
@@ -19,5 +13,4 @@
     </tr>
     
 </table>
-</body>
-</html>
+{% endblock %}

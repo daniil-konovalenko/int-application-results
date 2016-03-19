@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Поступление в 5 класс школы "Интеллектуал"</title>
+    {% endif %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename="style.css") }}">
+</head>
+<body>
+    <div id="header"></div>
+    {% block content %}{% endblock %}
+</body>
+</html>
