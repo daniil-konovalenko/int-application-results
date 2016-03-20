@@ -1,0 +1,12 @@
+{% macro idform(form) %}
+    <form action="{{ url_for("results") }}" method="post" name="student_id" class="form-inline">
+        <div class="form-group">
+            {{ form.hidden_tag() }}
+            <label for="id">ID участника</label>
+
+            {{ form.id(class="form-control") }}
+
+            <button type="submit" class="btn btn-default">Показать результаты</button>
+        </div>
+    </form>
+{% endmacro %}
