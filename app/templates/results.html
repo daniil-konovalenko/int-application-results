@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
+{% if notfound %}
+<p>Кажется, такого участника у нас не было</p>
+<p>Попробуйте еще раз</p>
+<form action="{{ url_for("results") }}" method="post" name="student_id">
+    <div class="form-group">
+        {{ form.hidden_tag() }}
+        <label for="id">ID участника</label>
+
+        {{ form.id(class="form-control") }}
+
+        <p><button type="submit" class="btn btn-default">Показать результаты</button>
+    </div>
+</form>
+
+{% else %}
 <h3>Результаты участника  №{{ student_id }}</h3>
 
 <table class="table">
@@ -16,4 +31,6 @@
         </tr>
 </table>
 Комментарии: {{ comments }}
+
+{% endif %}
 {% endblock %}

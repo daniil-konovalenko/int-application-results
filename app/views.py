@@ -16,6 +16,10 @@ def results():
     if request.method == 'POST':
         student_id = request.form['id']
         student_results = models.Results.query.get(student_id)
+
+        if not student_results:
+            return render_template('results.html', notfound=True, form=IDForm())
+
         results_table = [(subjects.get(column), student_results[column])
                          for column in student_results.__table__.columns.keys()
                          if student_results[column] is not None if column in subjects]
