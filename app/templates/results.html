@@ -1,16 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
-<table border="1">
-    <tr>
-    {% for subject, score in results %}
-        <td>{{ subject }}</td>
+<h3>Результаты участника  №{{ student_id }}</h3>
+
+<table class="table">
+
+    {% for subject, score in table %}
+        <tr>
+            <td>{{ subject }}</td>
+            <td>{{ score }}</td>
+        </tr>
     {% endfor %}
-    </tr>
-    <tr>
-    {% for subject, score in results %}
-        <td>{{ score }}</td>
-    {% endfor %}
-    </tr>
-    
+        <tr>
+            <td>Сумма</td>
+            <td>{{ table|sum(attribute=1) }}</td>
+        </tr>
 </table>
+Комментарии: {{ comments }}
 {% endblock %}

@@ -7,10 +7,20 @@
     {% else %}
     <title>Поступление в 5 класс школы "Интеллектуал"</title>
     {% endif %}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename="style.css") }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename="css/bootstrap.min.css") }}">
 </head>
 <body>
-    <div id="header"></div>
-    {% block content %}{% endblock %}
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav">
+                <li><a href="http://sch-int.ru">Школа "Интеллектуал"</a> </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-4">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
 </body>
 </html>
