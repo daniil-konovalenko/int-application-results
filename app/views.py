@@ -24,7 +24,7 @@ def results():
                          for column in student_results.__table__.columns.keys()
                          if student_results[column] is not None if column in subjects]
 
-        print(student_id)
+
         return render_template('results.html',
                                table=results_table,
                                student_id=student_id,
