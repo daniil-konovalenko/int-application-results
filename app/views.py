@@ -16,7 +16,7 @@ def index():
     return render_template('index.html', form=form)
 
 
-@app.route('/results', methods=['POST'])
+@app.route('/results', methods=['GET', 'POST'])
 def results():
     if request.method == 'POST':
         student_id = request.form['id']
@@ -36,4 +36,5 @@ def results():
                                student_id=student_id,
                                comments=student_results.comments)
 
-
+    else:
+        return redirect(url_for('index'))
