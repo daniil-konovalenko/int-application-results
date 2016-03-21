@@ -11,7 +11,7 @@ subjects = {
     "science": "Естествознание",
 }
 
-app = Flask(__name__)
+app = Flask(__name__.split('.')[0])
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
