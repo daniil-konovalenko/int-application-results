@@ -1,5 +1,10 @@
 from app import app
-from flask import render_template, request
+from flask import (render_template,
+                   request,
+                   redirect,
+                   url_for,
+                   flash,
+                   )
 from .forms import IDForm
 from app import models
 from app import subjects
@@ -18,7 +23,8 @@ def results():
         student_results = models.Results.query.get(student_id)
 
         if not student_results:
-            return render_template('results.html', notfound=True, form=IDForm())
+            flash('Кажется, участника с таким номером у нас нет. Попробуйте еще раз', 'warning')
+            return redirect(url_for('index'))
 
         results_table = [(subjects.get(column), student_results[column])
                          for column in student_results.__table__.columns.keys()

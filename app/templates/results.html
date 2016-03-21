@@ -1,11 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-{% if notfound %}
-<p>Кажется, такого участника у нас не было</p>
-<p>Попробуйте еще раз</p>
-{% from "macros.html" import idform %}
-{{ idform(form) }}
-{% else %}
 <h3>Результаты участника  №{{ student_id }}</h3>
 
 <table class="table table-hover">
@@ -23,5 +17,4 @@
 </table>
 Комментарии: {{ comments }}
 
-{% endif %}
 {% endblock %}
