@@ -15,6 +15,7 @@
             <td>{{ table|sum(attribute=1) }}</td>
         </tr>
 </table>
+{% if comments %}
 Комментарии: {{ comments }}
-
+{% endif %}
 {% endblock %}
