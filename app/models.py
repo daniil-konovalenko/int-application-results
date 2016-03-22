@@ -10,6 +10,15 @@ class Results(db.Model):
     science = db.Column(db.Integer)
     comments = db.Column(db.UnicodeText)
 
+    def __init__(self, student_id, math_test, math, philology, history, science, comments):
+        self.student_id = student_id
+        self.math_test = math_test
+        self.math = math
+        self.philology = philology
+        self.history = history
+        self.science = science
+        self.comments = comments
+
     def __repr__(self):
         return '<Result of student #{}>'.format(self.student_id)
 
