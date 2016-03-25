@@ -27,14 +27,16 @@ def results():
                   'warning')
             return redirect(url_for('index'))
 
-        results_table = [(subjects.get(column), student_results[column])
+        results_table = [(subjects.get(column).get('name'),
+                          student_results[column],
+                          subjects.get(column).get('max_score'))
                          for column in student_results.__table__.columns.keys()
                          if student_results[column] is not None if column in subjects]
 
         return render_template('results.html',
                                table=results_table,
                                student_id=student_id,
-                               comments=student_results.comments)
+                               )
 
     else:
         return redirect(url_for('index'))

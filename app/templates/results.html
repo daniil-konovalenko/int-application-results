@@ -4,7 +4,7 @@
 
 <table class="table table-hover">
 
-    {% for subject, score in table %}
+    {% for subject, score, maxscore in table %}
         <tr>
             <td>{{ subject }}</td>
             <td>{{ score }}</td>
@@ -15,7 +15,5 @@
             <td>{{ table|sum(attribute=1) }}</td>
         </tr>
 </table>
-{% if comments %}
-Комментарии: {{ comments }}
-{% endif %}
+
 {% endblock %}
