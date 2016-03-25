@@ -2,12 +2,12 @@ from app import db
 
 
 class Results(db.Model):
-    student_id = db.Column(db.Integer, primary_key=True)
-    math_test = db.Column(db.Integer)
-    math = db.Column(db.Integer)
-    philology = db.Column(db.Integer)
-    history = db.Column(db.Integer)
-    science = db.Column(db.Integer)
+    student_id = db.Column(db.Float, primary_key=True)
+    math_test = db.Column(db.Float)
+    math = db.Column(db.Float)
+    philology = db.Column(db.Float)
+    history = db.Column(db.Float)
+    science = db.Column(db.Float)
     comments = db.Column(db.UnicodeText)
 
     def __init__(self, student_id, math_test, math, philology, history, science, comments):
