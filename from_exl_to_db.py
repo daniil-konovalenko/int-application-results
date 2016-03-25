@@ -17,15 +17,15 @@ if __name__ == '__main__':
     highest_column = worksheet.get_highest_column()
     highest_row = worksheet.get_highest_row()
 
-    column_names = [cell.value.lower() for cell in list(worksheet.iter_rows())[0]]
-    for row in worksheet.iter_rows(row_offset=1):
+    for row in worksheet.iter_rows(row_offset=2):
         (student_id,
          math_test,
          math,
          philology,
          history,
          science,
-         comments) = [cell.value for cell in row]
+         sum,
+         ) = [cell.value for cell in row]
 
 
         results = models.Results(student_id=student_id,
@@ -34,7 +34,7 @@ if __name__ == '__main__':
                                  philology=philology,
                                  history=history,
                                  science=science,
-                                 comments=comments)
+                                 )
 
         db.session.add(results)
 
