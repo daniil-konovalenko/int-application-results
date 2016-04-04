@@ -9,6 +9,10 @@ subjects = {
     "philology": {"name": "Филология", "max_score": 20},
     "history": {"name": "История", "max_score": 20},
     "science": {"name": "Естествознание", "max_score": 20},
+    "biology": {"name": "Биология", "max_score": 20},
+    "chemistry": {"name": "Химия", "max_score": 20},
+    "english": {"name": "Английский язык", "max_score": 20},
+    "geography": {"name": "География", "max_score": 20}
 }
 
 app = Flask(__name__.split('.')[0])
