@@ -4,16 +4,16 @@ from app import subjects
 import logging
 
 
-math_max = 13
 
-def final_score(result):
+
+def final_score(result, math_test, math_test_max_score):
     results_table = [(subjects.get(column).get('name'),
                         result[column],
                           subjects.get(column).get('max_score'))
                           for column in result.__table__.columns.keys()
                           if result[column] is not None if column in subjects]
 
-    normalized_math_test = result.math_test / math_max * 20
+    normalized_math_test = result[math_test] / math_test_max_score * 20
     sum_of_two_best = sum(sorted([result[1] for result in results_table[1:]],
                                      reverse=True)[:2])
 
@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
         try:
 
-            final = final_score(result)
+            final = final_score(result, "math_test", 13)
             result.final = final
         except TypeError as e:
             logging.error(e)
