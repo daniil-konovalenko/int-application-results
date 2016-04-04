@@ -5,6 +5,7 @@ from flask_migrate import Migrate, MigrateCommand
 
 subjects = {
     "math_test": {"name": "Математика (тест)", "max_score": 13},
+    "math_test_18": {"name": "Математика (тест)", "max_score": 18},
     "math": {"name": "Математика", "max_score": 20},
     "philology": {"name": "Филология", "max_score": 20},
     "history": {"name": "История", "max_score": 20},
@@ -12,7 +13,8 @@ subjects = {
     "biology": {"name": "Биология", "max_score": 20},
     "chemistry": {"name": "Химия", "max_score": 20},
     "english": {"name": "Английский язык", "max_score": 20},
-    "geography": {"name": "География", "max_score": 20}
+    "geography": {"name": "География", "max_score": 20},
+
 }
 
 app = Flask(__name__.split('.')[0])

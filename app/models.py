@@ -3,6 +3,7 @@ from app import db
 
 class Results(db.Model):
     student_id = db.Column(db.Integer, primary_key=True)
+    math_test_18 = db.Column(db.Float)
     math_test = db.Column(db.Float)
     math = db.Column(db.Float)
     philology = db.Column(db.Float)
@@ -17,6 +18,7 @@ class Results(db.Model):
 
 
 
+
     def __init__(self,
                  student_id,
                  math_test,
@@ -28,19 +30,20 @@ class Results(db.Model):
                  chemistry,
                  english,
                  geography,
-                 final):
+                 final,
+                 math_test_18):
         self.student_id = student_id
         self.math_test = math_test
         self.math = math
         self.philology = philology
         self.history = history
         self.science = science
-        self.biology = biology,
+        self.biology = biology
         self.chemistry = chemistry
         self.english = english
         self.geography = geography
         self.final = final
-
+        self.math_test_18 = math_test_18
     def __repr__(self):
         return '<Result of student #{}>'.format(self.student_id)
 
