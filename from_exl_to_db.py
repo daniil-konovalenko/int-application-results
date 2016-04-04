@@ -22,9 +22,12 @@ if __name__ == '__main__':
          math_test,
          math,
          philology,
+         biology,
          history,
-         science,
-         sum,
+         chemistry,
+         english,
+         geography,
+         final,
          ) = [cell.value for cell in row]
 
 
@@ -33,7 +36,12 @@ if __name__ == '__main__':
                                  math=math,
                                  philology=philology,
                                  history=history,
-                                 science=science,
+                                 science=None,
+                                 biology=biology,
+                                 chemistry=chemistry,
+                                 english=english,
+                                 geography=geography,
+                                 final=final
                                  )
 
         db.session.add(results)
