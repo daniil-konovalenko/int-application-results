@@ -73,3 +73,5 @@ config.py
 # IDEs
 
 .idea/
+
+*.xlsx
