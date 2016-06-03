@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
 
         results = models.Results(student_id=student_id,
-                                 math_test=math_test,
+                                 math_test_18=math_test,
                                  math=math,
                                  philology=philology,
                                  history=history,
@@ -41,7 +41,8 @@ if __name__ == '__main__':
                                  chemistry=chemistry,
                                  english=english,
                                  geography=geography,
-                                 final=final
+                                 final=final,
+                                 math_test=None
                                  )
 
         db.session.add(results)
