@@ -15,8 +15,11 @@ class Results(db.Model):
     geography = db.Column(db.Float)
     final = db.Column(db.Float)
     comments = db.Column(db.UnicodeText)
-
-
+    math_unified_plan = db.Column(db.Float)
+    math_individual_plan =db.Column(db.Float)
+    math_final = db.Column(db.Float)
+    russian = db.Column(db.Float)
+    # Please forgive me
 
 
     def __init__(self,
@@ -31,7 +34,12 @@ class Results(db.Model):
                  english,
                  geography,
                  final,
-                 math_test_18):
+                 math_test_18,
+                 math_unified_plan,
+                 math_individual_plan,
+                 math_final,
+                 russian,
+                 ):
         self.student_id = student_id
         self.math_test = math_test
         self.math = math
@@ -44,6 +52,10 @@ class Results(db.Model):
         self.geography = geography
         self.final = final
         self.math_test_18 = math_test_18
+        self.math_unified_plan = math_unified_plan
+        self.math_individual_plan = math_individual_plan
+        self.math_final = math_final
+        self.russian = russian
     def __repr__(self):
         return '<Result of student #{}>'.format(self.student_id)
 

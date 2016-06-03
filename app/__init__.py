@@ -14,6 +14,13 @@ subjects = {
     "chemistry": {"name": "Химия", "max_score": 20},
     "english": {"name": "Английский язык", "max_score": 20},
     "geography": {"name": "География", "max_score": 20},
+    "russian": {"name": "Русский язык", "max_score": 20},
+    "math_individual_plan": {"name": "Математика (на программу с единым учебным планом)",
+                             "max_score": 20},
+    "math_unified_plan":
+        {"name": "Математика (на программу с индивидуальным учебным планом)",
+         "max_score": 20}
+    
 
 }
 
