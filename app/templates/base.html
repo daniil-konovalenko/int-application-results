@@ -53,8 +53,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
+            <div class="col-md-6 col-md-offset-3">
                 {% block content %}{% endblock %}
                 {% with messages = get_flashed_messages(with_categories=true) %}
                         {% if messages %}
@@ -66,7 +65,6 @@
                       {% endif %}
                     {% endwith %}
             </div>
-            <div class="col-sm-3"></div>
         </div>
     </div>
 </body>
