@@ -4,8 +4,8 @@ web:
   expose:
     - "8000"
   volumes:
-    - /usr/src/app/static
-  command: /usr/local/bin/gunicorn -w 2 -b :8000 app:app
+    - /usr/src/app/app/static
+  command: /usr/local/bin/gunicorn -w 3 -b :8000 app:app
 
 nginx:
   restart: always
