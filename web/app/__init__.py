@@ -1,7 +1,7 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
 
 subjects = {
     "math_test": {"name": "Математика (тест)", "max_score": 13},
@@ -33,5 +33,4 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-
-from app import views, models
+from app import views

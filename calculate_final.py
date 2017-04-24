@@ -1,9 +1,9 @@
-from app import db
-from app import models
-from app import subjects
 import logging
 
+from web.app import db
+from web.app import subjects
 
+from web.app import models
 
 
 def final_score(result, math_test, math_test_max_score):

@@ -1,7 +1,9 @@
-from app import models
-from app import db
-from openpyxl import load_workbook
 import argparse
+
+from web.app import db
+from openpyxl import load_workbook
+
+from web.app import models
 
 parser = argparse.ArgumentParser(description='Move from excel table to sqlite3 db')
 parser.add_argument('-f',
