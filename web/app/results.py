@@ -4,6 +4,9 @@ from collections import namedtuple
 
 
 def get_results(student_id):
+    if not student_id.isdigit():
+        return None
+    
     student = Student.query.filter(Student.assigned_id == student_id).first()
     
     if not student:
