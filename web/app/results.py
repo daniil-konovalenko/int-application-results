@@ -4,7 +4,6 @@ from collections import namedtuple
 
 
 def get_results(student_id):
-    
     student = Student.query.filter(Student.assigned_id == student_id).first()
     
     if not student:
@@ -13,7 +12,7 @@ def get_results(student_id):
     results_table = [(result.subject.name,
                       result.score,
                       result.subject.max_score)
-                      for result in student.results]
+                     for result in student.results]
     
     # TODO: custom formula
     final = calculate_final(student.results)

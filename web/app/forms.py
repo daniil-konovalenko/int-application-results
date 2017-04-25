@@ -5,4 +5,3 @@ from wtforms.validators import DataRequired
 
 class IDForm(Form):
     id = IntegerField('id', validators=[DataRequired])
-
