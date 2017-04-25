@@ -1,5 +1,4 @@
 from app import app
-from app import subjects
 from flask import (render_template,
                    request,
                    redirect,
@@ -7,10 +6,8 @@ from flask import (render_template,
                    flash,
                    )
 
-from app import models
 from .forms import IDForm
-
-from collections import namedtuple
+from .results import get_results
 
 
 @app.route('/')
@@ -24,6 +21,7 @@ def index():
 def results():
     if request.method == 'POST':
         student_id = request.form['id']
+        
         results = get_results(student_id)
         
         if results is None:
@@ -38,25 +36,3 @@ def results():
                                )
     else:
         return redirect(url_for('index'))
-
-
-def get_results(student_id):
-    student_results = models.Results.query.get(student_id)
-    
-    if not student_results:
-        return None
-    
-    # Oh god why
-    # TODO: make readable
-    results_table = [(subjects.get(column).get('name'),
-                      round(student_results[column], 1),
-                      subjects.get(column).get('max_score'))
-                     for column in student_results.__table__.columns.keys()
-                     if student_results[column] is not None if
-                     column in subjects]
-    
-
-    
-    final = round(student_results.final, 1)
-    results = namedtuple('results', ['table', 'final'])
-    return results(results_table, final)
