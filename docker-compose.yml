@@ -4,6 +4,8 @@ services:
   web:
     restart: always
     build: ./web
+    environment:
+      - APP_SETTINGS=config.ProductionConfig
     expose:
       - "8000"
     volumes:
@@ -26,6 +28,10 @@ services:
   postgres:
     restart: always
     image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+
     volumes:
       - data:/var/lib/postgresql/data
     ports:
