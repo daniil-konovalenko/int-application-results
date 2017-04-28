@@ -27,7 +27,8 @@ class Subject(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     max_score = db.Column(db.Float)
-    
+    always_count = db.Column(db.Boolean)
+    grade = db.Column(db.Integer)
     def __repr__(self):
         return f"<Subject(name: {self.name}, maximum score: {self.max_score})>"
 

@@ -26,7 +26,7 @@ def get_results(student_id):
     results = [ResultRow(result.subject,
                          result.score,
                          result.score / result.subject.max_score * 20,
-                         is_significant(student_results, result, {math_test}))
+                         is_significant(student_results, result))
                for result in student_results]
     
         
@@ -34,10 +34,13 @@ def get_results(student_id):
 
 
 def calculate_final(result_rows):
-    return sum([result.score for result in result_rows if result.is_significant])
+    return (sum([result.normalized_score for result in result_rows
+                if result.is_significant]))
 
 
-def is_significant(results, result, excluded_subjects):
-    results = [r for r in results if r.subject not in excluded_subjects]
+def is_significant(results, result):
+    if result.subject.always_count:
+        return True
+    results = [r for r in results if not r.subject.always_count]
     comparator = lambda r: r.score / r.subject.max_score
     return result in sorted(results, key=comparator, reverse=True)[:2]

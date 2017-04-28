@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<h3>Результаты участника  №{{ student_id }}</h3>
+<h3>Результаты участника  № {{ student_id }}</h3>
 
 <table class="table table-hover">
     <thead>
     <tr>
         <th>Предмет</th>
         <th>Результат</th>
-        <th>Нормированный результат</th>
+        <th>Норм. результат</th>
     </tr>
     </thead>
     {% for result in results %}
@@ -17,15 +17,15 @@
         <tr>
         {% endif %}
             <td>{{ result.subject.name }}</td>
-            <td>{{ result.score }} из {{ result.subject.max_score }}</td>
+            <td>{{ result.score }} из {{ result.subject.max_score | int }}</td>
             <td>{{ '%.2f' | format(result.normalized_score) }} из 20</td>
         </tr>
     {% endfor %}
         <tr>
             <td><strong>Итог</strong></td>
             <td></td>
-            <td><strong>{{ final }} из 60</strong></td>
+            <td><strong>{{ final | round(2)}} из 60</strong></td>
         </tr>
 </table>
-<p>По математике засчитывается лучший из двух результатов</p>
+<p>Итоговый результат — сумма баллов теста по математике и двух лучших предметов на <выбор></выбор></p>
 {% endblock %}
