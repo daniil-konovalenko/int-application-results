@@ -27,20 +27,29 @@ migrate = Migrate(app, db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
+
 @manager.command
-def create_superuser():
-    """Creates superuses in db"""
+def init_roles():
     user_role = Role(name='user')
     superuser_role = Role(name='superuser')
     with app.app_context():
         db.session.add(user_role)
         db.session.add(superuser_role)
-        
+        db.session.commit()
+
+@manager.command
+def create_user(login, password, first_name=None, last_name=None, superuser=False):
+    """Creates user in db"""
+    user_role = Role(name='user')
+    superuser_role = Role(name='superuser')
+    
+    with app.app_context():
         superuser = user_datastore.create_user(
-            first_name='Admin',
-            email='admin',
-            password=encrypt_password('admin'),
-            roles=[user_role, superuser_role]
+            first_name=first_name,
+            last_name=last_name,
+            email=login,
+            password=encrypt_password(password),
+            roles=[user_role, superuser_role] if superuser else [user_role]
         )
         db.session.commit()
     
