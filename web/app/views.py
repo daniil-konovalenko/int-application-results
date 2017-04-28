@@ -7,7 +7,7 @@ from flask import (render_template,
                    )
 
 from .forms import IDForm
-from .results import get_results
+from .results import get_results, calculate_final
 
 
 @app.route('/')
@@ -30,9 +30,9 @@ def results():
             return redirect(url_for('index'))
         
         return render_template('results.html',
-                               table=results.table,
+                               results=results,
                                student_id=student_id,
-                               final=results.final
+                               final=calculate_final(results)
                                )
     else:
         return redirect(url_for('index'))

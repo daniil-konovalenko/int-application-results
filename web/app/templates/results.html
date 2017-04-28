@@ -4,21 +4,27 @@
 
 <table class="table table-hover">
     <thead>
+    <tr>
         <th>Предмет</th>
         <th>Результат</th>
-        <th>Максимум</th>
+        <th>Нормированный результат</th>
+    </tr>
     </thead>
-    {% for subject, score, maxscore in table %}
+    {% for result in results %}
+        {% if result.is_significant %}
+        <tr class="warning">
+        {% else %}
         <tr>
-            <td>{{ subject }}</td>
-            <td>{{ score }}</td>
-            <td>{{ maxscore }}</td>
+        {% endif %}
+            <td>{{ result.subject.name }}</td>
+            <td>{{ result.score }} из {{ result.subject.max_score }}</td>
+            <td>{{ '%.2f' | format(result.normalized_score) }} из 20</td>
         </tr>
     {% endfor %}
         <tr>
             <td><strong>Итог</strong></td>
-            <td><strong>{{ final }}</strong></td>
-            <td><strong>40</strong></td>
+            <td></td>
+            <td><strong>{{ final }} из 60</strong></td>
         </tr>
 </table>
 <p>По математике засчитывается лучший из двух результатов</p>
