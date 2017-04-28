@@ -12,7 +12,7 @@
             {% else %}
             <form method="post" action="{{ url_for('upload.upload') }}" enctype="multipart/form-data">
                 {{ form.hidden_tag() }}
-                {{ form.file }}
+                {{ form.file(required=True) }}
                 <button type="submit" class="btn btn-success">Загрузить</button> <p>результаты {{ form.grade }} класса</p>
             </form>
             {% endif %}
