@@ -10,10 +10,12 @@
                     <a class="btn btn-primary" href="{{ url_for('security.login') }}">Войти</a>
                 </p>
             {% else %}
-            <form method="post" action="{{ url_for('upload.upload') }}" enctype="multipart/form-data">
-                {{ form.hidden_tag() }}
-                {{ form.file(required=True) }}
-                <button type="submit" class="btn btn-success">Загрузить</button> <p>результаты {{ form.grade }} класса</p>
+            <form method="post" action="{{ url_for('upload.upload') }}" enctype="multipart/form-data" class="form-inline">
+                <div class="form-group">
+                    {{ form.hidden_tag() }}
+                    {{ form.file(required=True, accept=".xlsx,.xls", class="form-control") }}
+                    <button type="submit" class="btn btn-primary">Загрузить</button> <p>результаты {{ form.grade(class="form-control    ") }} класса</p>
+                </div>
             </form>
             {% endif %}
 
