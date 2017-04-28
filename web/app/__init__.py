@@ -10,13 +10,14 @@ from flask_security import Security, SQLAlchemyUserDatastore
 from flask_sqlalchemy import SQLAlchemy
 from flask_security.utils import encrypt_password
 
+from .forms import LocalizedLoginForm
 
 app = Flask(__name__.split('.')[0])
 app.config.from_object(os.environ.get('APP_SETTINGS', 'config.DevelopmentConfig'))
 
 db = SQLAlchemy(app)
 
-admin = Admin(app, name='intresults', template_mode='bootstrap3')
+admin = Admin(app, name='intresults', template_mode='bootstrap3', base_template='my_master.html')
 
 gunicorn_error_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers.extend(gunicorn_error_logger.handlers)
@@ -48,7 +49,7 @@ from app.models import User, Role
 
 # Setup Flask-Security
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-security = Security(app, user_datastore)
+security = Security(app, user_datastore, login_form=LocalizedLoginForm)
 
 
 
