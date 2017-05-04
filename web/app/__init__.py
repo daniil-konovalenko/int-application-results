@@ -7,10 +7,9 @@ from flask_admin import helpers as admin_helpers
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_security import Security, SQLAlchemyUserDatastore
-from flask_sqlalchemy import SQLAlchemy
 from flask_security.utils import encrypt_password
+from flask_sqlalchemy import SQLAlchemy
 
-from .admin_index_view import UploadView
 from .forms import LocalizedLoginForm
 
 app = Flask(__name__.split('.')[0])

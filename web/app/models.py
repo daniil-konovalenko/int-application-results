@@ -1,5 +1,6 @@
-from app import db
 from flask_security import RoleMixin, UserMixin
+
+from app import db
 
 
 class Student(db.Model):
@@ -10,6 +11,7 @@ class Student(db.Model):
     first_name = db.Column(db.String(50))
     last_name = db.Column(db.String(50))
     year = db.Column(db.Integer)
+    grade = db.Column(db.Integer)
     
     results = db.relationship("Result", back_populates='student')
     
@@ -45,7 +47,7 @@ class Result(db.Model):
     subject = db.relationship('Subject')
     
     score = db.Column(db.Float)
-    
+    score_string = db.Column(db.String())
     def __repr__(self):
         return (f"<Result of student #{self.student.assigned_id}"
                 f" in {self.subject.name}>")

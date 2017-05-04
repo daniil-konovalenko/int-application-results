@@ -1,4 +1,3 @@
-from app import app
 from flask import (render_template,
                    request,
                    redirect,
@@ -6,8 +5,9 @@ from flask import (render_template,
                    flash,
                    )
 
+from app import app
 from .forms import IDForm
-from .results import get_results, calculate_final
+from .results import get_results
 
 
 @app.route('/')
@@ -30,9 +30,10 @@ def results():
             return redirect(url_for('index'))
         
         return render_template('results.html',
-                               results=results,
+                               results=results.rows,
                                student_id=student_id,
-                               final=calculate_final(results)
+                               final=results.final,
+                               show_normalized=results.normalized_present
                                )
     else:
         return redirect(url_for('index'))

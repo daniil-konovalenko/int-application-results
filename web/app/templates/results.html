@@ -2,12 +2,14 @@
 {% block content %}
 <h3>Результаты участника  № {{ student_id }}</h3>
 
-<table class="table table-hover">
+    <table class="table table-hover table-responsive table-borderless">
     <thead>
     <tr>
-        <th>Предмет</th>
+        <th class="fit">Предмет</th>
         <th>Результат</th>
+        {% if show_normalized %}
         <th>Норм. результат</th>
+        {% endif %}
     </tr>
     </thead>
     {% for result in results %}
@@ -16,16 +18,25 @@
         {% else %}
         <tr>
         {% endif %}
-            <td>{{ result.subject.name }}</td>
-            <td>{{ result.score }} из {{ result.subject.max_score | int }}</td>
+    <td class="fit">{{ result.subject.name }}</td>
+    <td>{{ result.score or result.str_score }}
+        {% if result.subject.max_score %}
+            из {{ result.subject.max_score | int }}
+        {% endif %}
+    </td>
+    {% if show_normalized %}
             <td>{{ '%.2f' | format(result.normalized_score) }} из 20</td>
+    {% endif %}
         </tr>
     {% endfor %}
+        {% if final != None %}
         <tr>
             <td><strong>Итог</strong></td>
             <td></td>
             <td><strong>{{ final | round(2)}} из 60</strong></td>
         </tr>
+        {% endif %}
 </table>
-<p>Итоговый результат — сумма баллов теста по математике и двух лучших предметов на <выбор></выбор></p>
+    <p>Итоговый балл равен сумме результатов теста по математике и двух
+        предметов, которые написаны лучше всего</p>
 {% endblock %}
