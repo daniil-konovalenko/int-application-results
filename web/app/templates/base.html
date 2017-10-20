@@ -6,9 +6,12 @@
     {% if title %}
     <title>{{ title }}</title>
     {% else %}
-    <title>Поступление в школу "Интеллектуал"</title>
+    <title>Поступление в школу  &laquo;Интеллектуал&raquo;</title>
     {% endif %}
     <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename="css/bootstrap.min.css") }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('.static', filename="style.css") }}">
+
     <link rel="icon" type="image/png" href="{{ url_for('.static', filename="favicon.ico") }}">
 </head>
 <body>
@@ -16,7 +19,7 @@
         <div class="navbar-header">
             <ul class="nav navbar-nav">
                 <li><a href="/">Главная</a></li>
-                <li><a href="http://sch-int.ru">Школа "Интеллектуал"</a></li>
+                <li><a href="http://sch-int.ru">Школа &laquo;Интеллектуал&raquo;</a></li>
 
             </ul>
         </div>

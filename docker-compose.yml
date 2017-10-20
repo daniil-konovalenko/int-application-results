@@ -1,20 +1,41 @@
-web:
-  restart: always
-  build: ./web
-  expose:
-    - "8000"
-  volumes:
-    - /usr/src/app/static
-  command: /usr/local/bin/gunicorn -w 2 -b :8000 app:app
+version: '2'
 
-nginx:
-  restart: always
-  build: ./nginx/
-  ports:
-    - "80:80"
-  volumes:
-    - /www/static
-  volumes_from:
-    - web
-  links:
-    - web:web
+services:
+  web:
+    restart: always
+    build: ./web
+    environment:
+      - APP_SETTINGS=config.ProductionConfig
+    expose:
+      - "8000"
+    volumes:
+      - /usr/src/app/app/static
+    command: /usr/local/bin/gunicorn -w 3 -b :8000 app:app
+
+  nginx:
+    restart: always
+    build: ./nginx/
+    ports:
+      - "80:80"
+    volumes:
+      - /www/static
+    volumes_from:
+      - web
+    links:
+      - web:web
+
+
+  postgres:
+    restart: always
+    image: postgres:latest
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+
+    volumes:
+      - data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  data: {}

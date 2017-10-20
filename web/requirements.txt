@@ -1,5 +1,4 @@
 alembic==0.8.5
-decorator==4.0.9
 Flask==0.10.1
 Flask-Migrate==1.8.0
 Flask-Script==2.0.5
@@ -9,12 +8,14 @@ itsdangerous==0.24
 Jinja2==2.8
 Mako==1.0.4
 MarkupSafe==0.23
-path.py==8.1.2
-pickleshare==0.6
-python-editor==0.5
 simplegeneric==0.8.1
 SQLAlchemy==1.0.12
 traitlets==4.2.1
 Werkzeug==0.11.4
 WTForms==2.1
 gunicorn==19.3.0
+psycopg2==2.6
+Flask-Admin==1.5.0
+Flask-Security>=1.7.5
+pandas
+Flask-Uploads
